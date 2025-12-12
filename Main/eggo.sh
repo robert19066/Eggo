@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Penguin's Eggs Installer Script
-# Automatically detects OS and installs from the official PPA
-
-# Simple colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -12,7 +8,7 @@ CYAN='\033[0;36m'
 MAGENTA='\033[0;35m'
 RESET='\033[0m'
 
-# Rainbow text function
+
 rainbow() {
     local text="$1"
     local colors=("$RED" "$YELLOW" "$GREEN" "$CYAN" "$BLUE" "$MAGENTA")
@@ -27,7 +23,7 @@ rainbow() {
     echo -e "${output}${RESET}"
 }
 
-# Simple status messages
+
 status() {
     echo -e "${CYAN}==>${RESET} $1"
 }
@@ -44,19 +40,17 @@ warn() {
     echo -e "${YELLOW}[WARN]${RESET} $1"
 }
 
-# Header
+
 clear
 rainbow "<- Eggo - The simpler installer for penguins-eggs! ->"
 echo -e "${CYAN}By robert19066${RESET}"
 echo ""
-
-# Check root
 if [[ $EUID -ne 0 ]]; then
     error "This script must be run as root (use sudo)"
     exit 1
 fi
 
-# Detect OS and architecture
+
 status "Detecting system..."
 
 if [ -f /etc/os-release ]; then
@@ -82,12 +76,14 @@ if [[ ! "$OS_ID" =~ ^(debian|ubuntu|linuxmint|pop|elementary|lubuntu)$ ]]; then
     echo "  - Fedora/OpenSUSE/RHEL: Use fresh-eggs script"
     echo "  - Universal: Download AppImage from GitHub releases"
     exit 1
+else
+    success "Apt-supported distribution detected"
+    rainbow "System supported!"
+    echo ""
 fi
 
-# Add penguins-eggs PPA
 status "Adding penguins-eggs repository..."
 
-# Download and add GPG key
 curl -fsSL https://pieroproietti.github.io/penguins-eggs-ppa/KEY.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/penguins-eggs.gpg 2>/dev/null
 
 if [ $? -ne 0 ]; then
@@ -95,18 +91,17 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Add repository
+
 echo "deb [arch=$(dpkg --print-architecture)] https://pieroproietti.github.io/penguins-eggs-ppa ./" | tee /etc/apt/sources.list.d/penguins-eggs.list > /dev/null
 
 success "Repository added"
 echo ""
 
-# Update package lists
 status "Updating package lists..."
 apt-get update -qq 2>&1 | grep -i "penguins-eggs" || true
 echo ""
 
-# Install penguins-eggs
+
 status "Installing penguins-eggs..."
 apt-get install -y penguins-eggs 2>&1 | grep -E "(Unpacking|Setting up|penguins-eggs)" || apt-get install -y penguins-eggs
 
@@ -122,9 +117,7 @@ else
 fi
 
 echo ""
-echo -e "${CYAN}================================${RESET}"
-rainbow "Penguin's Eggs installed!"
-echo -e "${CYAN}================================${RESET}"
+rainbow "--Penguin's Eggs installed!--"
 echo ""
 echo "Run 'eggs' to get started"
 echo "Documentation: https://penguins-eggs.net"
