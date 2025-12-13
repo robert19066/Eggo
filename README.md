@@ -29,7 +29,7 @@ A colorful, user-friendly installer script for [Penguins Eggs](https://penguins-
 1. Download the script:
 
 ```bash
-wget https://raw.githubusercontent.com/yourusername/eggo/main/eggo.sh
+wget https://github.com/robert19066/Eggo/Main/eggo.sh
 ```
 
 1. Make it executable:
@@ -51,11 +51,10 @@ sudo ./eggo.sh
 3. Adds the official Penguins Eggs PPA (if not present)
 4. Updates package lists
 5. Installs Penguins Eggs
-6. Verifies installation
 
 ## 🤝 Credits
 
-**Created by:** robert19066  
+**Created by:** Brickboss
 **In collaboration with:** Piero Proietti (creator of Penguins Eggs)
 
 ## 📚 Resources
