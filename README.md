@@ -1,5 +1,5 @@
 
-# 🐧 Eggo - The Simpler Installer for Penguins Eggs
+# 🐧 Eggo[V2 update!] - The Simpler Installer for Penguins Eggs
 
 A colorful, user-friendly installer script for [Penguins Eggs](https://penguins-eggs.net) on Debian-based Linux distributions.
 
@@ -11,6 +11,7 @@ A colorful, user-friendly installer script for [Penguins Eggs](https://penguins-
 - Less clunky than other installers(fresh-eggs)
 - Has literally **NO** dependencies.Literally none.
 - Licensed under GNU GPL v3.0,everyone feel free to fork and contribute!
+- Web UI for those who prefer graphical interfaces
 
 ## 🖥️ Supported Systems
 
@@ -29,20 +30,23 @@ A colorful, user-friendly installer script for [Penguins Eggs](https://penguins-
 1. Download the script:
 
 ```bash
-wget https://raw.githubusercontent.com/yourusername/eggo/main/eggo.sh
+wget https://raw.githubusercontent.com/yourusername/eggo/main/selector.sh
 ```
 
 1. Make it executable:
 
 ```bash
-chmod +x eggo.sh
+chmod +x ./selector.sh
 ```
 
 3. Run with sudo:
 
 ```bash
-sudo ./eggo.sh
+sudo ./selector.sh
 ```
+
+Then chose your preferred installation method (CLI or Web UI) and follow the prompts!
+``~
 
 ## 🎯 What It Does
 

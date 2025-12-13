@@ -1,0 +1,19 @@
+{
+  "name": "eggo-webui",
+  "version": "1.0.0",
+  "description": "Web UI for Eggo - Penguins Eggs Installer",
+  "main": "server.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
